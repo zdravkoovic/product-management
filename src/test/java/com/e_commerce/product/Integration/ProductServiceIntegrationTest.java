@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +18,7 @@ import com.e_commerce.API.Http.Requests.ProductRequest;
 import com.e_commerce.Application.Product.Dtos.ProductDto;
 import com.e_commerce.Application.Product.Services.ProductService;
 
+@Tag("integration")
 @SpringBootTest(properties = {
     "eureka.client.enabled=false",
     "spring.cloud.discovery.enabled=false"
