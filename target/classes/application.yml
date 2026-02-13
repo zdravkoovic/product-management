@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: product
+
+  config:
+    import:
+    - optional:configserver:${SPRING_CLOUD_CONFIG_URI:http://localhost:8888}
+  flyway:
+    validate-on-migrate: false
+    baseline-on-migrate: true 
