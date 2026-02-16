@@ -21,6 +21,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: '21'
+
+
     - name: Run Unit Tests
       run: mvn test
     
