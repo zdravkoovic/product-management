@@ -1,9 +1,13 @@
+# Stage 1: Build
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
+WORKDIR /build
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Stage 2: Runtime
 FROM eclipse-temurin:21-jre-jammy
-
 WORKDIR /app
-
-COPY target/product-1.0.jar /app
-
+COPY --from=builder /build/target/*.jar app.jar
 EXPOSE 8050
-
-ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75.0", "-jar", "product-1.0.jar"]
+ENTRYPOINT ["java", "-XX:MaxRAMPercentage=75.0", "-jar", "app.jar"]
